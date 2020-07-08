@@ -10,7 +10,6 @@ document.addEventListener('copy',function(event){
     event.preventDefault();
     chrome.runtime.sendMessage({
         event:"copy",
-        message:selectedWord
     });
     
 })  
