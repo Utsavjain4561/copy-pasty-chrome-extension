@@ -25,6 +25,7 @@ function keyPressed(event){
 	if (key==="Control")
 		return;
 	 if (event.ctrlKey&&key==='.') {
+         console.log("Key pressed");
     // Even though event.key is not 'Control' (e.g., 'a' is pressed),
     chrome.storage.local.get(['list'],function(result){
     	console.log('hello');
