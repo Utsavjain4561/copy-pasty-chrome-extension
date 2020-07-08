@@ -1,5 +1,6 @@
 console.log("copy-pasty-chrome-extension");
 
+
 // Listener will trigger at CTRL+C or mouse copy event
 document.addEventListener('copy',function(event){
     // console.log("Content copied");
