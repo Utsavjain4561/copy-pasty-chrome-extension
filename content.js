@@ -14,3 +14,20 @@ document.addEventListener('copy',function(event){
     });
     
 });
+
+window.onkeydown = keyPressed;
+function keyPressed(event){
+	let key = event.key;
+	if (key==="Control")
+		return;
+	 if (event.ctrlKey&&key==='.') {
+    // Even though event.key is not 'Control' (e.g., 'a' is pressed),
+    chrome.storage.local.get(['list'],function(result){
+    	console.log('hello');
+    	console.log(result.list);
+    })
+  } else {
+    alert(`Key pressed ${key}`);
+  }
+	// console.log(key);
+}
