@@ -1,4 +1,50 @@
+
+let index = 0,
+	currentFocus;
+	
 console.log("copy-pasty-chrome-extension");
+const getFocussedTarget = (event)=>event.target;
+const recieveText=(req,send,res)=>{
+	let {event} = req;
+	index = req.index;
+    console.log('message recieveText');
+    //store the message in the global list
+    window.onkeyup = keyReleased;
+    return true;
+}
+const pasteCurrentText = (currentText)=>{
+	console.log(currentText);
+	if(currentFocus instanceof HTMLInputElement){
+		
+		currentFocus.value = currentFocus.value+' '+currentText;
+	}
+	else if(currentFocus.isContentEditable){
+		let content = document.createTextNode(currentText);
+		currentFocus.appendChild(content);
+	}
+}
+const keyReleased=(event)=>{
+	let key = event.key;
+	if (key==="Control"){
+		console.log("control released!!");
+		chrome.storage.local.get(['list'],(result)=>{
+			pasteCurrentText(result.list[index]);             
+		})
+		
+	}
+	
+	chrome.storage.local.get(['list'],(result)=>{
+		currentFocus.placeholder = currentFocus.value+result.list[index]
+	})
+	console.log(key);
+	return true;
+}
+
+window.onmousedown = (event)=>{
+	console.log("Clicked");
+	currentFocus = getFocussedTarget(event);
+	console.log("Focus changed to ",currentFocus);
+}
 
 // Listener will trigger at CTRL+C or mouse copy event
 document.addEventListener('copy',function(event){
@@ -22,33 +68,5 @@ document.addEventListener('copy',function(event){
 });
 
 chrome.runtime.onMessage.addListener(recieveText);
-function recieveText(req,send,res){
-    let {event,index} = req;
-    	console.log('message recieveText');
-        //store the message in the global list
-        window.onkeyup = keyReleased;
-    return true;
-}
-// window.onkeydown = keyPressed;
-// function keyPressed(event){
-// 	let key = event.key;
-// 	if (key==="Control")
-// 		return;
-// 	 if (event.ctrlKey&&key==='I') {
-//     // Even though event.key is not 'Control' (e.g., 'a' is pressed),
-//     chrome.storage.local.get(['list'],function(result){
-//     	console.log('hello');
-//     	console.log(result.list);
-//     })
-//   } else {
-//     // alert(`Key pressed ${key}`);
-//   }
-	// console.log(key);
-// }
-function keyReleased(event){
-	let key = event.key;
-	if (key==="Control")
-		console.log("control released!!");
-	console.log(key);
-	return true;
-}
+
+

@@ -13,7 +13,7 @@
     },
     "commands": {
     "extended-paste": {
-      "suggested_key": { "default": "Ctrl+I" },
+      "suggested_key": { "default": "Ctrl+Shift+Y" },
       "description": "Send a 'toggle-feature' event to the extension"
     }
   },
