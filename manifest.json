@@ -11,13 +11,11 @@
     "background":{
         "scripts":["background.js"]
     },
-    "commands":{
-    	"extended-paste":{
-    		"suggested-key":{
-    		"default":"Ctrl+Shift+5"
-    		},
-    		"description":"options to last copied text"
-    	}
-    },
-    "permissions":["tabs","clipboardWrite","clipboardRead","storage"]
+    "commands": {
+    "toggle-feature": {
+      "suggested_key": { "default": "Ctrl+Shift+Y" },
+      "description": "Send a 'toggle-feature' event to the extension"
+    }
+  },
+  "permissions":["storage"]
 }
