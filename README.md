@@ -6,3 +6,4 @@ A chrome extensions to boost the process of copy-paste of text on a web browser
 ## Branch feature
 - Added copy text feature from content script
 - Sending message to background in global script
+- Note : Set keyboard shortcut to Ctrl+Shift+Y in your chrome://extensions keyboard shortcut panel for this chrome extension.
