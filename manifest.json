@@ -10,10 +10,14 @@
     
     "background":{
         "scripts":["background.js"]
-    }
-    
-
-
-    
-
+    },
+    "commands":{
+    	"extended-paste":{
+    		"suggested-key":{
+    		"default":"Ctrl+Shift+5"
+    		},
+    		"description":"options to last copied text"
+    	}
+    },
+    "permissions":["tabs"]
 }
