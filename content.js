@@ -14,23 +14,41 @@ document.addEventListener('copy',function(event){
     	localList.push(selectedWord);
     	chrome.storage.local.set({'list':localList},function(arg){
     		console.log(localList);
+    		return true;
     	});
+    	return true;
     });
+    return true;
 });
 
-window.onkeydown = keyPressed;
-function keyPressed(event){
+chrome.runtime.onMessage.addListener(recieveText);
+function recieveText(req,send,res){
+    let {event,index} = req;
+    	console.log('message recieveText');
+        //store the message in the global list
+        window.onkeyup = keyReleased;
+    return true;
+}
+// window.onkeydown = keyPressed;
+// function keyPressed(event){
+// 	let key = event.key;
+// 	if (key==="Control")
+// 		return;
+// 	 if (event.ctrlKey&&key==='I') {
+//     // Even though event.key is not 'Control' (e.g., 'a' is pressed),
+//     chrome.storage.local.get(['list'],function(result){
+//     	console.log('hello');
+//     	console.log(result.list);
+//     })
+//   } else {
+//     // alert(`Key pressed ${key}`);
+//   }
+	// console.log(key);
+// }
+function keyReleased(event){
 	let key = event.key;
 	if (key==="Control")
-		return;
-	 if (event.ctrlKey&&key==='I') {
-    // Even though event.key is not 'Control' (e.g., 'a' is pressed),
-    chrome.storage.local.get(['list'],function(result){
-    	console.log('hello');
-    	console.log(result.list);
-    })
-  } else {
-    // alert(`Key pressed ${key}`);
-  }
-	// console.log(key);
+		console.log("control released!!");
+	console.log(key);
+	return true;
 }

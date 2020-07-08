@@ -4,10 +4,22 @@ let index = 0;
 chrome.commands.onCommand.addListener(function(command) {
   chrome.storage.local.get(['list'],function(result){
     	console.log('hello');
-    	console.log(result.list[index]);
-    	index = (index+1)%result.list.length;
-    });
+    	let localLists = result.list;
+    	console.log(localLists);
+    	index = (index+1)%localLists.length;
+    		chrome.tabs.query({active: true, currentWindow: true}, function(tabs){
+    chrome.tabs.sendMessage(tabs[0].id, {action: "send_key_release","index":index}, function() {
+    	console.log("done!");
+    	return true;
+    });  
+    return true;
 });
+    		return true;
+    });
+  return true;
+});
+
+
 
 // chrome.runtime.onMessage.addListener(recieveText);
 // function recieveText(req,send,res){
