@@ -19,5 +19,5 @@
     		"description":"options to last copied text"
     	}
     },
-    "permissions":["tabs","clipboardWrite","clipboardRead"]
+    "permissions":["tabs","clipboardWrite","clipboardRead","storage"]
 }
