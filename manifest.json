@@ -11,10 +11,13 @@
     "background":{
         "scripts":["background.js"]
     },
-    "permissions":["clipboardWrite","clipboardRead"]
-    
-
-
-    
-
+    "commands":{
+    	"extended-paste":{
+    		"suggested-key":{
+    		"default":"Ctrl+Shift+5"
+    		},
+    		"description":"options to last copied text"
+    	}
+    },
+    "permissions":["tabs","clipboardWrite","clipboardRead"]
 }

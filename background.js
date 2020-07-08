@@ -16,10 +16,17 @@ const  getClipboardContent=()=>{
     backgroundPage.document.execCommand("Paste");
     return helperDiv.innerHTML;
 }
-chrome.tabs.query({active:true,currentWindow:true},(tabs)=>{
-    
-})
+
 // Lsitener to recieve message from content script
+let index = 0;
+// Lsitener to recieve message from content script
+chrome.commands.onCommand.addListener(function(command) {
+  console.log('onCommand event received for message: ', command);
+  console.log(index);
+  console.log(copiedData[index]);
+  index = (index+1)%copiedData.length;
+});
+
 chrome.runtime.onMessage.addListener(recieveText);
 function recieveText(req,send,res){
     const {event} = req;
@@ -30,3 +37,4 @@ function recieveText(req,send,res){
     }
     console.log("Copied Data is ",copiedData)
 }
+
