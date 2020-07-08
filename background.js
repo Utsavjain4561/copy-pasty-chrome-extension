@@ -1,15 +1,12 @@
 console.log("Background is running")
-window.copiedData=[];
-window.index = 0;
-let clipboard=[];
-// Lsitener to recieve message from content script
 let index = 0;
 // Lsitener to recieve message from content script
 chrome.commands.onCommand.addListener(function(command) {
-  console.log('onCommand event received for message: ', command);
-  console.log(index);
-  console.log(copiedData[index]);
-  index = (index+1)%copiedData.length;
+  chrome.storage.local.get(['list'],function(result){
+    	console.log('hello');
+    	console.log(result.list[index]);
+    	index = (index+1)%result.list.length;
+    });
 });
 
 // chrome.runtime.onMessage.addListener(recieveText);

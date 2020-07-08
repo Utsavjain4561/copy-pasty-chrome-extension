@@ -1,6 +1,5 @@
 console.log("copy-pasty-chrome-extension");
 
-
 // Listener will trigger at CTRL+C or mouse copy event
 document.addEventListener('copy',function(event){
     // console.log("Content copied");
@@ -24,7 +23,7 @@ function keyPressed(event){
 	let key = event.key;
 	if (key==="Control")
 		return;
-	 if (event.ctrlKey&&key==='.') {
+	 if (event.ctrlKey&&key==='I') {
     // Even though event.key is not 'Control' (e.g., 'a' is pressed),
     chrome.storage.local.get(['list'],function(result){
     	console.log('hello');

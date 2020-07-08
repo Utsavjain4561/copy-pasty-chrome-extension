@@ -12,8 +12,8 @@
         "scripts":["background.js"]
     },
     "commands": {
-    "toggle-feature": {
-      "suggested_key": { "default": "Ctrl+Shift+Y" },
+    "extended-paste": {
+      "suggested_key": { "default": "Ctrl+I" },
       "description": "Send a 'toggle-feature' event to the extension"
     }
   },
