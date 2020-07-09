@@ -1,38 +1,35 @@
-console.log("copy-pasty-chrome-extension");
+let _previousData="";
 
-
-// Listener will trigger at CTRL+C or mouse copy event
-document.addEventListener('copy',function(event){
-    // console.log("Content copied");
-
-    //Add selected data to the clipboard
-    let selectedWord = window.getSelection().toString();
-    chrome.storage.local.get(['list'],function(result){
-    	let localList = result.list;
-    	console.log(typeof localList);
-    	if (typeof localList === 'undefined')
-    		localList = [];
-    	localList.push(selectedWord);
-    	chrome.storage.local.set({'list':localList},function(arg){
-    		console.log(localList);
-    	});
-    });
-});
-
-window.onkeydown = keyPressed;
-function keyPressed(event){
-	let key = event.key;
-	if (key==="Control")
-		return;
-	 if (event.ctrlKey&&key==='.') {
-         console.log("Key pressed");
-    // Even though event.key is not 'Control' (e.g., 'a' is pressed),
-    chrome.storage.local.get(['list'],function(result){
-    	console.log('hello');
-    	console.log(result.list);
+const setClipboardText = async (clipText)=>{
+    chrome.storage.local.get(['list'],clipboard=>{
+        let {list} = clipboard;
+        if(typeof list === "undefined")
+			list = [];
+		if(list.indexOf(clipText)==-1)
+			list.push(clipText);
+        chrome.storage.local.set({'list':list},status=>console.log("Text Saved"));
     })
-  } else {
-    // alert(`Key pressed ${key}`);
-  }
-	// console.log(key);
 }
+const getClipboardText = async()=>{
+	chrome.storage.local.get(['list'],clipboard=>{
+		console.log(clipboard.list);
+	})
+}
+
+
+
+setInterval(()=>{
+    console.log("Checking for clipboard changes.....");
+    
+    navigator.clipboard.readText()
+    .then(clipboardText=>{
+        if(clipboardText.length>0 && clipboardText!==_previousData){
+            //Add to this text to the storage
+			setClipboardText(clipboardText);
+            _previousData = clipboardText
+        }
+
+    })
+    .then(()=>getClipboardText())
+    .catch(err=>console.log(err))
+},2000)

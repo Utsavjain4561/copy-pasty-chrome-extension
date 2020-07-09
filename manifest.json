@@ -8,14 +8,7 @@
         "js": ["content.js"]
       } ],
     
-    "background":{
-        "scripts":["background.js"]
-    },
-    "commands": {
-    "toggle-feature": {
-      "suggested_key": { "default": "Ctrl+Shift+Y" },
-      "description": "Send a 'toggle-feature' event to the extension"
-    }
-  },
+    
+    
   "permissions":["storage"]
 }
