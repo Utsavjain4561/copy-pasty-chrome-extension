@@ -8,14 +8,7 @@
         "js": ["content.js"]
       } ],
     
-    "background":{
-        "scripts":["background.js"]
-    },
-    "commands": {
-    "extended-paste": {
-      "suggested_key": { "default": "Ctrl+Shift+Y" },
-      "description": "Send a 'toggle-feature' event to the extension"
-    }
-  },
+    
+    
   "permissions":["storage"]
 }
