@@ -17,11 +17,13 @@ function addClipboardListItem(text){
         navigator.clipboard.writeText(textContent)
         .then(()=>{console.log(`Text saved to clipboard`);
             chrome.storage.local.get(['list'],clipboard=>{
+               
         let list = clipboard.list;
-        let ind = list.indexOf(textContent);
-        if (ind !== -1)
-            list.splice(ind,1);
+        let index = list.indexOf(textContent);
+        if (index !== -1)
+            list.splice(index,1);
         list.unshift(textContent);
+        
         _clipboardList.innerHTML = "";
         chrome.storage.local.set({'list':list},()=>getClipboardText());
 
