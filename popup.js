@@ -13,6 +13,13 @@ const addClipboardListItem = (text)=>{
 
     listItem.addEventListener('click',(event)=>{
         let {textContent} = event.target;
+        let index = list.indexOf(textContent);
+        if (index !== -1)
+            list.splice(index,1);
+        list.unshift(textContent);
+        _clipboardList.innerHTML = "";
+        chrome.storage.local.set({'list':list},()=>getClipboardText());
+
         navigator.clipboard.writeText(textContent)
         .then(()=>console.log(`Text saved to clipboard`))
         .catch(err=>console.log(err));
