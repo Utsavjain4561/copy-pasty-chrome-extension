@@ -1,20 +1,16 @@
 let _previousData="";
-
+let _maxListSize = 5;
 const setClipboardText = async (clipText)=>{
     chrome.storage.local.get(['list'],clipboard=>{
         let {list} = clipboard;
         if(typeof list === "undefined")
-			list = [];
+            list = [];
 		if(list.indexOf(clipText)==-1)
 			list.push(clipText);
         chrome.storage.local.set({'list':list},status=>console.log("Text Saved"));
     })
 }
-const getClipboardText = async()=>{
-	chrome.storage.local.get(['list'],clipboard=>{
-		console.log(clipboard.list);
-	})
-}
+
 
 
 
@@ -30,6 +26,5 @@ setInterval(()=>{
         }
 
     })
-    .then(()=>getClipboardText())
     .catch(err=>console.log(err))
 },2000)
