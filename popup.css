@@ -1,0 +1,29 @@
+body{
+    width:15rem;
+    
+}
+nav{
+	/*color: #00BFFF;*/
+	background-color: #00BFFF;
+	height: 20px;
+}
+ul{
+    list-style: none;
+    padding: 0;
+}
+ul li{
+    font-size: 16px;
+    margin : 10px;
+    border-bottom: 1px solid;
+    border-bottom-color: #00BFFF;
+    cursor: pointer;
+    white-space: nowrap
+    
+}
+ul li:hover{
+    background: whitesmoke
+}
+ul li div{
+    padding: 8px;
+    overflow: hidden;
+}
