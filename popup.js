@@ -7,11 +7,14 @@ function addClipboardListItem(text){
         listDiv = document.createElement("div"),
         listSpan = document.createElement("span"),
         listText = document.createTextNode(text);
+      
     listSpan.appendChild(listText)
     listDiv.appendChild(listText)
+
     listItem.appendChild(listDiv);
     _clipboardList.appendChild(listItem);
 
+    
     listItem.addEventListener('click',(event)=>{
         let {textContent} = event.target;
         navigator.clipboard.writeText(textContent)
@@ -30,6 +33,8 @@ function addClipboardListItem(text){
 
         });
     })
+
+    
 });
 }
 function getClipboardText(){
@@ -37,7 +42,7 @@ function getClipboardText(){
         let list = clipboard.list;
         if (typeof list !== undefined)
         list.forEach(item => {
-            
+            console.log(item);
             addClipboardListItem(item)
         });
 });
