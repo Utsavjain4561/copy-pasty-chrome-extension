@@ -1,10 +1,15 @@
 body{
     width:15rem;
     
+    
 }
+
+
 nav{
-    background: rgb(85,119,252)
+    background: #00BFFF;
+    font-family: 'Roboto', sans-serif;
 }
+
 ul{
     list-style: none;
     padding: 0;
