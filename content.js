@@ -5,8 +5,11 @@ const setClipboardText = async (clipText)=>{
         let {list} = clipboard;
         if(typeof list === "undefined")
             list = [];
+        if(list.length === _maxListSize){
+            list.pop();
+        }
 		if(list.indexOf(clipText)==-1)
-			list.push(clipText);
+			list.unshift(clipText)
         chrome.storage.local.set({'list':list},status=>console.log("Text Saved"));
     })
 }
