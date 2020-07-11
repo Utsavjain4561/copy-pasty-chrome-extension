@@ -40,7 +40,7 @@ function addClipboardListItem(text){
     	let {textContent} = event.target;
     	console.log(textContent);
     	let ind = textContent.indexOf('https://www.youtube.com/');
-    	if (ind!==-1)
+    	if (ind===0)
     	{
     		let videoId = "";
     		let idIndex = textContent.indexOf('watch?v=');
@@ -51,6 +51,15 @@ function addClipboardListItem(text){
     		else
     			videoId = textContent.substring(idIndex+8,textContent.length);
     		console.log(`https://img.youtube.com/vi/${videoId}/1.jpg`);
+    	}
+    	else
+    	{
+    		let ind = textContent.indexOf('http');
+    		if (ind===0)
+    		{
+    			let url = new URL(textContent);
+    			console.log(`https://favicons.githubusercontent.com/${url.hostname}`);
+    		}
     	}
     },false);
 }
