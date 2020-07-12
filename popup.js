@@ -93,10 +93,6 @@ function addClipboardListItem(text){
     
 
     // });
-    
-    
-    
-    
 }
 
 getClipboardText();
