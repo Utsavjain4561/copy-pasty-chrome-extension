@@ -32,6 +32,20 @@ function getThumbnail(textContent){
                 imageUrl:url
             };
         }
+	else
+    	{
+    		let ind = textContent.indexOf('http');
+    		if (ind===0)
+    		{
+    			let url = new URL(textContent);
+			let ans = "https://favicons.githubusercontent.com/"+url.hostname;
+    			// console.log(`https://favicons.githubusercontent.com/${url.hostname}`);
+			return {
+				sourceUrl:textContent,
+				imageUrl:ans
+			}
+    		}
+    	}
         return {
             sourceUrl:"",
             imageUrl:""
