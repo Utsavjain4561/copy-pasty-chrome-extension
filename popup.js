@@ -29,7 +29,8 @@ function getThumbnail(textContent){
             console.log(`https://img.youtube.com/vi/${videoId}/1.jpg`);
             return {
                 sourceUrl:textContent,
-                imageUrl:url
+                imageUrl:url,
+                isVideo:true,
             };
         }
 	else
@@ -42,7 +43,8 @@ function getThumbnail(textContent){
     			// console.log(`https://favicons.githubusercontent.com/${url.hostname}`);
 			return {
 				sourceUrl:textContent,
-				imageUrl:ans
+                imageUrl:ans,
+                isVideo:false
 			}
     		}
     	}
@@ -55,9 +57,10 @@ function getThumbnail(textContent){
 function addClipboardListItem(text){
     
 
-    let {sourceUrl,imageUrl} = getThumbnail(text);
+    let {sourceUrl,imageUrl,isVideo} = getThumbnail(text);
     let listItem = document.createElement("li"),
         listDiv = document.createElement("div"),
+        imageDiv = document.createElement("div");
         listPara = document.createElement("p"),
         listText = document.createTextNode(text),
         popupDiv = document.createElement('div'),
@@ -67,6 +70,14 @@ function addClipboardListItem(text){
     if(imageUrl.length>0){
         console.log("IMage Url found")
         imagePopup.src = imageUrl;
+        if(!isVideo){
+            imagePopup.style.width='32px'
+            imagePopup.style.height='32px';
+        }
+        else{
+            imagePopup.style['margin-left']='0px';
+            imagePopup.style['margin-top']='0px';
+        }
         popupLink.href = sourceUrl;
         popupLink.target='_blank';
         popupLink.appendChild(imagePopup);

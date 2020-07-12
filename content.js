@@ -1,5 +1,5 @@
 let _previousData="";
-let _maxListSize = 5;
+let _maxListSize = 15;
 const setClipboardText = async (clipText)=>{
     chrome.storage.local.get(['list'],clipboard=>{
         let {list} = clipboard;
