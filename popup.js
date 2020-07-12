@@ -60,7 +60,11 @@ function addClipboardListItem(text){
     let {sourceUrl,imageUrl,isVideo} = getThumbnail(text);
     let listItem = document.createElement("li"),
         listDiv = document.createElement("div"),
-        imageDiv = document.createElement("div");
+        imageDiv = document.createElement("div"),
+        deleteDiv =document.createElement("div"),
+        contentDiv = document.createElement("div");
+        deleteButton = document.createElement("a"),
+        deleteImage = document.createElement("img");
         listPara = document.createElement("p"),
         listText = document.createTextNode(text),
         popupDiv = document.createElement('div'),
@@ -73,10 +77,12 @@ function addClipboardListItem(text){
         if(!isVideo){
             imagePopup.style.width='32px'
             imagePopup.style.height='32px';
+            
         }
         else{
             imagePopup.style['margin-left']='0px';
             imagePopup.style['margin-top']='0px';
+            listPara.style['max-width'] = '12rem'
         }
         popupLink.href = sourceUrl;
         popupLink.target='_blank';
@@ -84,15 +90,33 @@ function addClipboardListItem(text){
         listDiv.appendChild(popupLink);
         
     }
-
+    
     listPara.appendChild(listText)
     listDiv.appendChild(listPara);
-    listItem.appendChild(listDiv);
+    listDiv.classList.add("list-div");
+    contentDiv.appendChild(listDiv);
+    deleteImage.src='https://cdn.iconscout.com/icon/premium/png-256-thumb/delete-1432400-1211078.png'
+    deleteImage.classList.add("delete")
+    
+    deleteDiv.appendChild(deleteImage);
+    contentDiv.appendChild(deleteDiv);
+    contentDiv.classList.add("content");
+    listItem.appendChild(contentDiv);
 
     _clipboardList.appendChild(listItem);
-
+    deleteImage.addEventListener('click',(event)=>{
+        
+        console.log("Delete clicked");
+        chrome.storage.local.get(['list'],clipboard=>{
+            let list = clipboard.list;
+            let index = list.indexOf(text);
+            list.splice(index,1);
+            _clipboardList.innerHTML="";
+            chrome.storage.local.set({'list':list},()=>getClipboardText());
+        })
+    })
     
-    listItem.addEventListener('click',(event)=>{
+    listDiv.addEventListener('click',(event)=>{
         let {textContent} = event.target;
         navigator.clipboard.writeText(textContent)
         .then(()=>{
@@ -110,14 +134,7 @@ function addClipboardListItem(text){
         });
     });
 
-    // listItem.addEventListener('mouseover',(event)=>{
-    //     popupDiv.style.visibility = 'visible';
-    //     listItem.addEventListener('mouseout',(event)=>{
-    //        popupDiv.style.visibility = 'hidden'
-    //     });
     
-
-    // });
 }
 
 getClipboardText();

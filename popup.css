@@ -5,18 +5,15 @@ body{
 
     
 }
-
-
 nav{
     background: #00BFFF;
     font-family: 'Roboto', sans-serif;
 }
-
-
-
 ul{
     list-style: none;
     padding: 0;
+    position: relative;
+    top:60px;
     overflow: auto;
 }
 ul li{
@@ -31,8 +28,7 @@ ul li{
 ul li:hover{
     background: whitesmoke
 }
-ul li div{
-    
+.content{
     overflow: hidden;
     display: flex;
     text-overflow: ellipsis;
@@ -40,14 +36,22 @@ ul li div{
     
     height: 100%;
 }
-ul li div p{
+.list-div{
+    text-overflow: ellipsis;
+    display: flex;
+    width:20rem;
+}
+
+.list-div p{
     position: relative;
     padding-top:1em; 
     padding-left: 1.2em;
-    font-size: 1.1em
+    font-size: 1.1em;
+    max-width:14rem;
+    overflow: hidden;
 
 }
-ul li div a img{
+.list-div a img{
     height: 100%;
     margin-left:1em;
     margin-top:1em
@@ -58,23 +62,12 @@ ul li div a img{
     top:-5rem;
     
 }
-.tooltip {
-    position: relative;
-    display: inline-block;
-    border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
-  }
-  
-  /* Tooltip text */
-  .tooltip .tooltiptext {
-    visibility: hidden;
-    width: 120px;
-    background-color: black;
-    color: #fff;
-    text-align: center;
-    padding: 5px 0;
-    border-radius: 6px;
-   
-    /* Position the tooltip text - see examples below! */
-    position: absolute;
-    z-index: 1;
-  }
+.delete{
+    width: 20px;
+    height: 20px;
+    margin-top: 1.4em;
+    margin-right:1em;
+    border: none;
+    outline: none;
+    
+}
