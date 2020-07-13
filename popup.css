@@ -93,6 +93,9 @@ ul li:hover{
 
 
 }
+.list-div a{
+    width:4rem;
+}
 .list-div a img{
     height: 100%;
     margin-left:1em;
