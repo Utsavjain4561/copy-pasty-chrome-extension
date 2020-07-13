@@ -25,19 +25,24 @@ All set to use the **copy-pasty-chrome-extension** !!
 - After giving the permission the  **copy-pasty-chrome-extension** icon will appear in the **Chrome Browser** next to the search box. If the icon does not appear the click on to **Extensions** tab on the toolbar and **pin** the **copy-pasty-chrome-extension**.
 
 ![alt text](https://i.imgur.com/Trs57ZM.png)
-
+<style>
+     img[src*='#center'] { 
+    display: block;
+    margin: auto;
+}
+ </style>
+ 
 - Click on the icon and a **popup** will appear as shown below
-<div>
-<img style="margin-left:10rem"src="https://i.imgur.com/6o0cvf2.png"/>
-</div>
+
+![alt text](https://i.imgur.com/6o0cvf2.png#center)
 
 ### Adding text 
  
  - Select some text on the page and hit **Ctrl+c**. Do this with as many different texts you want and then open the extension.The extension will contain all your copied text as shown below.
- 
+
+ ![alt text](https://i.imgur.com/Fm2U7Kh.png#center)
 <div>
-<img style="margin-left:10rem"src="https://i.imgur.com/Fm2U7Kh.png"/>
-</div>
+
 
 - On clicking the list **icons** and **thumbnail** you will be directed to the corresponding webpage while clicking on the list item itself will select the particular text which you can paste using ***Ctrl+v** shortcut.
 
