@@ -84,7 +84,7 @@ ul li:hover{
     border: none;
     outline: none;
     
-
+}
 #snackbar {
   visibility: hidden; /* Hidden by default. Visible on click */
   width:94%;
