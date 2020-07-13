@@ -29,9 +29,25 @@ function getThumbnail(textContent){
             console.log(`https://img.youtube.com/vi/${videoId}/1.jpg`);
             return {
                 sourceUrl:textContent,
-                imageUrl:url
+                imageUrl:url,
+                isVideo:true,
             };
         }
+	else
+    	{
+    		let ind = textContent.indexOf('http');
+    		if (ind===0)
+    		{
+    			let url = new URL(textContent);
+			let ans = "https://favicons.githubusercontent.com/"+url.hostname;
+    			// console.log(`https://favicons.githubusercontent.com/${url.hostname}`);
+			return {
+				sourceUrl:textContent,
+                imageUrl:ans,
+                isVideo:false
+			}
+    		}
+    	}
         return {
             sourceUrl:"",
             imageUrl:""
@@ -41,9 +57,14 @@ function getThumbnail(textContent){
 function addClipboardListItem(text){
     
 
-    let {sourceUrl,imageUrl} = getThumbnail(text);
+    let {sourceUrl,imageUrl,isVideo} = getThumbnail(text);
     let listItem = document.createElement("li"),
         listDiv = document.createElement("div"),
+        imageDiv = document.createElement("div"),
+        deleteDiv =document.createElement("div"),
+        contentDiv = document.createElement("div");
+        deleteButton = document.createElement("a"),
+        deleteImage = document.createElement("img");
         listPara = document.createElement("p"),
         listText = document.createTextNode(text),
         popupDiv = document.createElement('div'),
@@ -53,21 +74,49 @@ function addClipboardListItem(text){
     if(imageUrl.length>0){
         console.log("IMage Url found")
         imagePopup.src = imageUrl;
+        if(!isVideo){
+            imagePopup.style.width='32px'
+            imagePopup.style.height='32px';
+            
+        }
+        else{
+            imagePopup.style['margin-left']='0px';
+            imagePopup.style['margin-top']='0px';
+            listPara.style['max-width'] = '12rem'
+        }
         popupLink.href = sourceUrl;
         popupLink.target='_blank';
         popupLink.appendChild(imagePopup);
         listDiv.appendChild(popupLink);
         
     }
-
+    
     listPara.appendChild(listText)
     listDiv.appendChild(listPara);
-    listItem.appendChild(listDiv);
+    listDiv.classList.add("list-div");
+    contentDiv.appendChild(listDiv);
+    deleteImage.src='https://cdn.iconscout.com/icon/premium/png-256-thumb/delete-1432400-1211078.png'
+    deleteImage.classList.add("delete")
+    
+    deleteDiv.appendChild(deleteImage);
+    contentDiv.appendChild(deleteDiv);
+    contentDiv.classList.add("content");
+    listItem.appendChild(contentDiv);
 
     _clipboardList.appendChild(listItem);
-
+    deleteImage.addEventListener('click',(event)=>{
+        
+        console.log("Delete clicked");
+        chrome.storage.local.get(['list'],clipboard=>{
+            let list = clipboard.list;
+            let index = list.indexOf(text);
+            list.splice(index,1);
+            _clipboardList.innerHTML="";
+            chrome.storage.local.set({'list':list},()=>getClipboardText());
+        })
+    })
     
-    listItem.addEventListener('click',(event)=>{
+    listDiv.addEventListener('click',(event)=>{
         let {textContent} = event.target;
         navigator.clipboard.writeText(textContent)
         .then(()=>{
@@ -83,16 +132,16 @@ function addClipboardListItem(text){
                 chrome.storage.local.set({'list':list},()=>getClipboardText());
             });
         });
+        let x = document.getElementById("snackbar");
+
+  // Add the "show" class to DIV
+  		x.className = "show";
+
+  // After 3 seconds, remove the show class from DIV
+  		setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
     });
 
-    // listItem.addEventListener('mouseover',(event)=>{
-    //     popupDiv.style.visibility = 'visible';
-    //     listItem.addEventListener('mouseout',(event)=>{
-    //        popupDiv.style.visibility = 'hidden'
-    //     });
     
-
-    // });
 }
 
 getClipboardText();

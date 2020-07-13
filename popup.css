@@ -1,26 +1,28 @@
 body{
     width:20rem;
+    height: 100vh;
     
 
     
 }
-
-
 nav{
     background: #00BFFF;
+    height:15px;
     font-family: 'Roboto', sans-serif;
 }
-
-
-
 ul{
     list-style: none;
     padding: 0;
+    position: relative;
+    /*top:60px;*/
+    overflow: auto;
 }
 ul li{
+	margin: 10px;
     font-size: 16px;
     height: 4rem;
-    border-bottom: 1px solid rgba(0,0,0,0.2);
+    border-bottom: 1px solid;
+    border-bottom-color: #00BFFF;
     box-shadow: 0.3px 0 5px -2.1px rgba(0,0,0,0.5);
     cursor: pointer;
     white-space: nowrap
@@ -29,24 +31,32 @@ ul li{
 ul li:hover{
     background: whitesmoke
 }
-ul li div{
-    
+.content{
     overflow: hidden;
     display: flex;
     text-overflow: ellipsis;
-
-    
     height: 100%;
 }
-ul li div p{
+.list-div{
+    text-overflow: ellipsis;
+    display: flex;
+    width:20rem;
+}
+
+.list-div p{
     position: relative;
     padding-top:1em; 
     padding-left: 1.2em;
-    font-size: 1.1em
+    font-size: 1.1em;
+    max-width:17rem;
+    overflow: hidden;
+    width:17rem;
 
 }
-ul li div a img{
-    height: 100%
+.list-div a img{
+    height: 100%;
+    margin-left:1em;
+    margin-top:1em
 }
 .popup{
     position:relative;
@@ -54,23 +64,69 @@ ul li div a img{
     top:-5rem;
     
 }
-.tooltip {
-    position: relative;
-    display: inline-block;
-    border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
-  }
-  
-  /* Tooltip text */
-  .tooltip .tooltiptext {
-    visibility: hidden;
-    width: 120px;
-    background-color: black;
-    color: #fff;
-    text-align: center;
-    padding: 5px 0;
-    border-radius: 6px;
-   
-    /* Position the tooltip text - see examples below! */
-    position: absolute;
-    z-index: 1;
-  }
+.delete{
+    width: 20px;
+    height: 20px;
+    margin-top: 1.4em;
+    margin-right:1em;
+    border: none;
+    outline: none;
+    
+}
+.content{
+    overflow: hidden;
+    display: flex;
+    
+    justify-content: space-between;
+    
+    height: 100%;
+}
+.list-div{
+    
+    display: contents;
+    width:20rem;
+}
+#snackbar {
+  visibility: hidden; /* Hidden by default. Visible on click */
+  min-width: 250px; /* Set a default minimum width */
+  margin-left: -125px; /* Divide value of min-width by 2 */
+  background-color: #333; /* Black background color */
+  color: #fff; /* White text color */
+  text-align: center; /* Centered text */
+  border-radius: 2px; /* Rounded borders */
+  padding: 16px; /* Padding */
+  position: fixed; /* Sit on top of the screen */
+  z-index: 1; /* Add a z-index if needed */
+  left: 50%; /* Center the snackbar */
+  bottom: 30px; /* 30px from the bottom */
+}
+
+/* Show the snackbar when clicking on a button (class added with JavaScript) */
+#snackbar.show {
+  visibility: visible; /* Show the snackbar */
+  /* Add animation: Take 0.5 seconds to fade in and out the snackbar.
+  However, delay the fade out process for 2.5 seconds */
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+/* Animations to fade the snackbar in and out */
+@-webkit-keyframes fadein {
+  from {bottom: 0; opacity: 0;}
+  to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadein {
+  from {bottom: 0; opacity: 0;}
+  to {bottom: 30px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+  from {bottom: 30px; opacity: 1;}
+  to {bottom: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+  from {bottom: 30px; opacity: 1;}
+  to {bottom: 0; opacity: 0;}
+}
