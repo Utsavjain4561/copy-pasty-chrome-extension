@@ -1,17 +1,23 @@
 body{
     width:20rem;
     height: 100vh;
-    
-
-    
 }
 nav{
     background: #00BFFF;
     font-family: 'Roboto', sans-serif;
 }
+nav a span {
+    margin-left:0.8rem;
+    font-size: 1.1em;
+}
+nav a img{
+    width: 25px;
+    height: 25px
+}
 ul{
     list-style: none;
     padding: 0;
+    margin: 0;
     position: relative;
     top:60px;
     overflow: auto;
@@ -31,14 +37,12 @@ ul li:hover{
 .content{
     overflow: hidden;
     display: flex;
-    text-overflow: ellipsis;
-
-    
+    justify-content: space-between;
     height: 100%;
 }
 .list-div{
-    text-overflow: ellipsis;
-    display: flex;
+    
+    display: contents;
     width:20rem;
 }
 
@@ -47,8 +51,9 @@ ul li:hover{
     padding-top:1em; 
     padding-left: 1.2em;
     font-size: 1.1em;
-    max-width:14rem;
+    max-width:17rem;
     overflow: hidden;
+    width: 17rem
 
 }
 .list-div a img{

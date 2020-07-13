@@ -94,6 +94,7 @@ function addClipboardListItem(text){
     listPara.appendChild(listText)
     listDiv.appendChild(listPara);
     listDiv.classList.add("list-div");
+    
     contentDiv.appendChild(listDiv);
     deleteImage.src='https://cdn.iconscout.com/icon/premium/png-256-thumb/delete-1432400-1211078.png'
     deleteImage.classList.add("delete")
