@@ -94,7 +94,6 @@ function addClipboardListItem(text){
     listPara.appendChild(listText)
     listDiv.appendChild(listPara);
     listDiv.classList.add("list-div");
-    
     contentDiv.appendChild(listDiv);
     deleteImage.src='https://cdn.iconscout.com/icon/premium/png-256-thumb/delete-1432400-1211078.png'
     deleteImage.classList.add("delete")
@@ -133,6 +132,13 @@ function addClipboardListItem(text){
                 chrome.storage.local.set({'list':list},()=>getClipboardText());
             });
         });
+        let x = document.getElementById("snackbar");
+
+  // Add the "show" class to DIV
+  		x.className = "show";
+
+  // After 3 seconds, remove the show class from DIV
+  		setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
     });
 
     
