@@ -22,7 +22,7 @@ ul{
     padding: 0;
     margin: 0;
     position: relative;
- 
+    margin-top:20px;
     overflow: auto;
 }
 ul li{
@@ -83,8 +83,8 @@ ul li:hover{
     margin-right:1em;
     border: none;
     outline: none;
-    
 }
+
 #snackbar {
   visibility: hidden; /* Hidden by default. Visible on click */
   width:94%;
