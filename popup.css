@@ -1,6 +1,9 @@
+html{
+    height: 100%;
+}
 body{
     width:20rem;
-    height: 100vh;
+    
 
 }
 nav{
