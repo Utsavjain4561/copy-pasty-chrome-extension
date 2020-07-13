@@ -5,7 +5,7 @@ function getClipboardText(){
         let list = clipboard.list;
         let emptyDiv = document.getElementById('empty-div');
         
-        if(list.length===0){
+        if(list===undefined || list.length===0){
             
             emptyDiv.classList.remove('hide-div');
 
