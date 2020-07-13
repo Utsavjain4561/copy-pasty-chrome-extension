@@ -7,12 +7,18 @@
         "matches": ["<all_urls>"],
         "js": ["content.js"]
       } ],
-    
+    "icons":{
+        "16":"icon.png",
+            "24":"icon.png",
+            "32":"icon.png",
+            "48":"icon.png"
+    },
     "browser_action":{
         "default_icon":{
             "16":"icon.png",
             "24":"icon.png",
-            "32":"icon.png"
+            "32":"icon.png",
+            "48":"icon.png"
         },
         "default_title":"Copy-pasty",
         "default_popup":"popup.html"
