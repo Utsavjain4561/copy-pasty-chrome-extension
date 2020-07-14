@@ -119,6 +119,7 @@ ul li:hover{
 #snackbar {
   visibility: hidden; /* Hidden by default. Visible on click */
   width:94%;
+  position:fixed;
   margin-left: 3%;/*  Divide value of min-width by 2 */
   background-color: #00BFFF; /* Black background color */
   color: #fff; /* White text color */
