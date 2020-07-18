@@ -43,8 +43,6 @@ All set to use the **copy-pasty-chrome-extension** !!
 </p>
  
 
-
-
 - On clicking the list **icons** and **thumbnail** you will be directed to the corresponding webpage while clicking on the list item itself will select the particular text which you can paste using **Ctrl+v** shortcut.
 
 - Clicking on the **delete** icon will delete the text from the list
