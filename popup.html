@@ -1,7 +1,12 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     
+    <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=0.5">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Copy-Pasty</title>
+    
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="popup.css">
 
@@ -10,13 +15,21 @@
 <body>
        
     <nav class="navbar navbar-dark fixed-top">
-        <a class="navbar-brand" target="_blank" href="https://github.com/Utsavjain4561/copy-pasty-chrome-extension">
-        <span><strong>Copy</strong>-Pasty</span></a>
-
-
     </nav>
-    <div id="snackbar">Text copied!</div>
+    <div id = "empty-div"class="jumbotron jumbotron-fluid hide-div">
+            <div class="container">
+             <img id="not-found"src="https://www.startupindia.gov.in/content/dam/invest-india/Blogs/404.PNG">
+             <h4 id="empty-title">No text found !!</h4>
+              <p class="lead">All your copied text will appear here, select any of them to paste </p>
+              <a target="_blank" id="learn-btn" href="https://github.com/Utsavjain4561/copy-pasty-chrome-extension">
+                Learn More  
+                
+              </a>
+              
+            </div>
+          </div>
     <ul id="clipboard_list"></ul>
+    <div id="snackbar">Text copied!</div>
    
 
 	
