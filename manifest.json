@@ -1,6 +1,6 @@
 {
-    "name":"copy-pasty-chrome",
-    "description":"A chrome extension to boost the process of copy-paste of text in web browser",
+    "name":"ClipboardX",
+    "description":"A chrome extension, work around for a clipboard",
     "manifest_version":2,
     "version":"1.0",
     "content_scripts": [ {
@@ -14,9 +14,9 @@
             "24":"icon.png",
             "32":"icon.png"
         },
-        "default_title":"Copy-pasty",
+        "default_title":"ClipboardX",
         "default_popup":"popup.html"
     },
     
-  "permissions":["storage"]
+  "permissions":["storage","tabs"]
 }
